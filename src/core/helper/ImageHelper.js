@@ -1,5 +1,5 @@
 import React from "react";
-import phone from "../../assets/latest1.jpeg";
+
 import { API } from "../../backend";
 
 const ImageHelper = ({ product }) => {

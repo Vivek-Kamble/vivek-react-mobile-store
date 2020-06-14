@@ -50,7 +50,9 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
       currency: "INR",
     };
 
-    const paymentData = getPaymentData(amount);
+    const paymentData = await getPaymentData(jsonData).then((res) => res);
+    // .then((res) => res.json())
+    // .catch((err) => console.log(err));
     // await fetch(`http://192.168.0.7:8000/api/razorpay`, {
     //   method: "POST",
     //   body: { amount },

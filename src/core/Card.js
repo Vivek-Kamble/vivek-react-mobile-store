@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import phone from "../assets/latest1.jpeg";
+
 import "./cardstyle.css";
 import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from "react-router-dom";
