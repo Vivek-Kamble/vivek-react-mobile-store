@@ -1,0 +1,41 @@
+.ourcard {
+  height: 200px;
+  width: 300px;
+  padding: 25px 15px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: 2px solid lightgray;
+  overflow: hidden;
+}
+.image {
+  height: 150px;
+  width: 70px;
+}
+img {
+  height: 150px;
+  width: 70px;
+}
+img:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+.right {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: 110px;
+  top: -139px;
+
+  display: inline-block;
+}
+p {
+  margin: 0;
+}
+
+.name {
+  /* width: 100px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
