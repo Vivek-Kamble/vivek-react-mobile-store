@@ -64,13 +64,14 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
     };
 
     // const paymentData = await data.json();
-    const paymentData = await fetch(`http://192.168.0.7:8000/api/razorpay`, {
-      method: "POST",
-      body: await JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .catch((err) => console.log(err));
+    // const paymentData = await fetch(`http://localhost:8000/api/razorpay`, {
+    //   method: "POST",
+    //   body,
+    // })
+    //   .then((res) => res.json())
+    //   .catch((err) => console.log(err));
 
+    const paymentData = await getPaymentData(body).then((res) => res);
     console.log("111111", paymentData);
 
     const options = {
