@@ -3,6 +3,19 @@ import { isAuthenticated } from "../auth/helper";
 import { loadCart, cartEmpty } from "./helper/cartHelper";
 import { Link } from "react-router-dom";
 import { getPaymentData } from "./helper/checkoutHelper";
+import { API } from "../backend";
+
+// export const getPaymentData = async (data) => {
+//   console.log(data);
+//   return fetch(`${API}/razorpay`, {
+//     method: "POST",
+//     Accept: "application/json",
+//     "Content-Type": "application/json",
+//     body: { data },
+//   })
+//     .then((res) => res.json())
+//     .catch((err) => console.log(err));
+// };
 
 const loadRazorpay = () => {
   return new Promise((resolve) => {
@@ -45,19 +58,18 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
       return;
     }
 
-    const jsonData = {
+    const body = {
       amount: `${amount}`,
       currency: "INR",
     };
 
-    const paymentData = await getPaymentData(jsonData).then((res) => res);
-    // .then((res) => res.json())
-    // .catch((err) => console.log(err));
-    // await fetch(`http://192.168.0.7:8000/api/razorpay`, {
-    //   method: "POST",
-    //   body: { amount },
-    //   mode: "no-cors",
-    // }).then((res) => res.json());
+    // const paymentData = await data.json();
+    const paymentData = await fetch(`http://192.168.0.7:8000/api/razorpay`, {
+      method: "POST",
+      body: await JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
 
     console.log("111111", paymentData);
 
