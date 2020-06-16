@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth/helper";
 import { loadCart, cartEmpty } from "./helper/cartHelper";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { getPaymentData } from "./helper/checkoutHelper";
 import { API } from "../backend";
 
-// export const getPaymentData = async (data) => {
-//   console.log(data);
-//   return fetch(`${API}/razorpay`, {
-//     method: "POST",
-//     Accept: "application/json",
-//     "Content-Type": "application/json",
-//     body: { data },
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.log(err));
-// };
+import { createOrder } from "./helper/orderHelper";
+import OrderSucess from "./OrderSucess";
 
 const loadRazorpay = () => {
   return new Promise((resolve) => {
@@ -33,18 +24,28 @@ const loadRazorpay = () => {
 };
 
 //main checkout func component
-const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
+const Checkout = ({
+  products,
+  setReload = (f) => f,
+  reload = undefined,
+  setLoading = (f) => f,
+  loading = undefined,
+}) => {
   const [data, setData] = useState({
-    loading: false,
     success: false,
     error: false,
+    didRedirect: false,
     address: "",
   });
+  const [orderDetails, setOrderDetails] = useState();
+  const { success, error, didRedirect } = data;
 
   const getFinalAmount = () => {
+    let finalPrice = 0;
     products.map((prod) => {
-      setAmount(prod.totalPrice);
+      finalPrice = finalPrice + prod.totalPrice;
     });
+    setAmount(finalPrice);
   };
   const [amount, setAmount] = useState(0);
   useEffect(() => {
@@ -52,28 +53,18 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
   }, [products]);
 
   async function displayRazorpay() {
+    // setData({ ...data, loading: true });
+    setLoading(true);
+
     const res = await loadRazorpay();
     if (!res) {
       alert("Payment sdk failed to load, check ur network");
       return;
     }
 
-    const body = {
-      amount: `${amount}`,
-      currency: "INR",
-    };
+    const paymentData = await getPaymentData(amount * 100, userId, token);
 
-    // const paymentData = await data.json();
-    // const paymentData = await fetch(`http://localhost:8000/api/razorpay`, {
-    //   method: "POST",
-    //   body,
-    // })
-    //   .then((res) => res.json())
-    //   .catch((err) => console.log(err));
-
-    const paymentData = await getPaymentData(body).then((res) => res);
-    console.log("111111", paymentData);
-
+    // console.log(paymentData);
     const options = {
       key: "rzp_test_3PYkwvoil834qD",
       amount: paymentData.amount,
@@ -82,18 +73,44 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
       name: "Mobile Store",
       description: "Test Transaction",
       // image: "https://example.com/your_logo",
-      handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+      handler: async function (response) {
+        setData({ ...data, success: true });
+        setReload(!reload);
+        // setReload(!reload);
+        // console.log(products);
+        // console.log(response);
+        const orderData = {
+          products: products,
+          transaction_id: response.razorpay_payment_id,
+          amount: paymentData.amount,
+        };
+        // console.log(orderData);
+        const orderResponse = await createOrder(userId, token, orderData);
+        // .then((res) => res.json)
+        // .catch((err) => console.log(err));
+        // console.log(orderResponse);
+        cartEmpty();
+        setLoading(false);
+        setOrderDetails(orderResponse);
+
+        // successRedirect(orderResponse);
       },
       prefill: {
-        name: "Gaurav Kumar",
+        name: "Vivek Kamble",
       },
     };
     var paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
+
+  const successRedirect = (order) => {
+    // console.log(order);
+    // console.log(success);
+    if (order) {
+      console.log(order);
+      return <Redirect to={`user/order/success/${order._id}`} />;
+    }
+  };
 
   const user = isAuthenticated() && isAuthenticated().user;
   const token = isAuthenticated() && isAuthenticated().token;
@@ -105,6 +122,8 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
         className="btn btn-success rounded"
         onClick={() => {
           displayRazorpay();
+
+          // getPaymentData(amount);
           // payumoney(getFinalAmount(), user, products[0]);
         }}
       >
@@ -125,8 +144,8 @@ const Checkout = ({ products, setReload = (f) => f, reload = undefined }) => {
       <h5>
         Final Amount :<span className="text-success">₹ {amount}</span>
       </h5>
-
       {showPaymentButton()}
+      {successRedirect(orderDetails || null)}
     </div>
   );
 };

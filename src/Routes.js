@@ -14,6 +14,7 @@ import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import UpdateCategory from "./admin/UpdateCategory";
 import Cart from "./core/Cart";
+import OrderSucess from "./core/OrderSucess";
 
 const Routes = ({ match }) => {
   return (
@@ -24,6 +25,11 @@ const Routes = ({ match }) => {
         <Route path="/signin" exact component={Signin} />
         <Route path="/cart" exact component={Cart} />
         <PrivateRoute path="/user/dashboard" exact component={UserDashBoard} />
+        <PrivateRoute
+          path="/user/order/success/:orderId"
+          exact
+          component={OrderSucess}
+        />
         <AdminRoute path="/admin/dashboard" exact component={AdminDashBoard} />
         <AdminRoute
           path="/admin/categories"

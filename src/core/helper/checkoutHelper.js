@@ -1,12 +1,16 @@
 import { API } from "../../backend";
 
-export const getPaymentData = (data) => {
-  console.log(data);
-  return fetch(`${API}/razorpay`, {
+export const getPaymentData = (amount, id, token) => {
+  return fetch(`${API}/razorpay/${id}`, {
     method: "POST",
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    body: data,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      amount,
+    }),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
