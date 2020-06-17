@@ -4,7 +4,7 @@ import { loadCart, cartEmpty } from "./helper/cartHelper";
 import { Link, Redirect } from "react-router-dom";
 import { getPaymentData } from "./helper/checkoutHelper";
 import { API } from "../backend";
-
+import "./checkout.css";
 import { createOrder } from "./helper/orderHelper";
 import OrderSucess from "./OrderSucess";
 
@@ -131,7 +131,7 @@ const Checkout = ({
       </button>
     ) : (
       <span>
-        <p className="text-danger">Please Sign in to proceed order</p>
+        <p className="text-danger signin">Please Sign in to proceed order</p>
         <Link to="/signin">
           <button className="btn mt-4 rounded btn-primary">Sign In</button>
         </Link>
@@ -140,8 +140,8 @@ const Checkout = ({
   };
 
   return (
-    <div>
-      <h5>
+    <div className="check-container">
+      <h5 className="finalamount">
         Final Amount :<span className="text-success">₹ {amount}</span>
       </h5>
       {showPaymentButton()}

@@ -26,7 +26,7 @@ const Card = ({ product, addToCart = true, removeFromCart = false }) => {
       addToCart && (
         <button
           onClick={addingToCart}
-          className="col-sm-8 btn rounded btn-sm btn-outline-primary"
+          className="col-sm-8 btn rounded btn-sm btn-outline-primary add"
         >
           Add to cart
         </button>

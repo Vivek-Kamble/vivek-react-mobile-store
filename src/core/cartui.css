@@ -83,3 +83,125 @@ p {
 .quantity > i {
   position: relative;
 }
+
+@media (max-width: 750px) {
+  .ourcard1 {
+    height: 130px;
+    /* width: 800px; */
+    width: 90%;
+    padding: 15px 5px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 2px solid lightgray;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .image1 {
+    height: 100px;
+    width: 70px;
+  }
+  img {
+    height: 100px;
+    width: 50px;
+  }
+  img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+  .right1 {
+    position: relative;
+    width: 30%;
+    height: 100px;
+    left: 110px;
+    top: -139px;
+
+    display: inline-block;
+  }
+  p {
+    margin: 0;
+  }
+
+  .name1,
+  .desc1 {
+    position: relative;
+    left: -35px;
+    top: 37px;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .desc1 {
+  }
+
+  .remove {
+    position: absolute;
+    /* left: 600px; */
+    width: 100px;
+    vertical-align: top;
+    line-height: 10px;
+    font-size: 10px;
+    height: 20px;
+    right: 0%;
+    left: -60%;
+    top: 117px;
+  }
+
+  .price {
+    color: black;
+    position: relative;
+    left: 33%;
+    top: -164px;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    width: 80px;
+    height: 20px;
+    display: block;
+  }
+  .delivery {
+    position: relative;
+    left: 43%;
+    top: -290px;
+    width: 20%;
+    display: none;
+  }
+  .quantity {
+    position: relative;
+    left: 69%;
+    top: -171px;
+    width: 60px;
+
+    height: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    display: block;
+    border: solid 2px lightgray;
+  }
+  .iconm {
+    /* padding-left: 0px;
+    margin-left: 0px; */
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    left: -9px;
+    top: -2px;
+  }
+  .iconp {
+    position: relative;
+    left: -2px;
+    top: -2px;
+  }
+  .quantity > i {
+    position: relative;
+    height: 10px;
+    width: 10px;
+  }
+  .quantity > span {
+    position: relative;
+    left: 0px;
+    top: -3px;
+  }
+}

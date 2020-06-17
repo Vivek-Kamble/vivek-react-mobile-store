@@ -1,0 +1,19 @@
+@media (max-width: 750px) {
+  .check-container {
+    width: 100px;
+    position: relative;
+    left: -27px;
+    top: 6px;
+    font-size: 15px;
+    overflow: hidden;
+  }
+  .finalamount {
+    width: 100px;
+    font-size: 15px;
+  }
+
+  .signin {
+    font-size: 12px;
+    width: 100px;
+  }
+}

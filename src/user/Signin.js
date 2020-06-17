@@ -8,7 +8,7 @@ import login from "../assets/login.png";
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "a@vivek.com",
+    email: "test@test.com",
     password: "1234",
     error: "",
     loading: false,

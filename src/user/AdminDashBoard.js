@@ -2,6 +2,8 @@ import React from "react";
 import Base from "../core/Base";
 import { isAuthenticated } from "../auth/helper";
 import { Link } from "react-router-dom";
+import "./admindash.css";
+import Charts from "./Chart";
 const AdminDashBoard = () => {
   const {
     user: { name, email, role },
@@ -44,7 +46,7 @@ const AdminDashBoard = () => {
     );
   };
   const adminRightside = () => {
-    //
+    return <Charts />;
   };
   return (
     <Base title="Welcome to Admin Dashboard" className="container p-2">

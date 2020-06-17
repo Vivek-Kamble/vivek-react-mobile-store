@@ -69,7 +69,9 @@ const CartUI = ({
       </div>
       <div className="right1">
         <p className="font-weight-bold name1">{cartName}</p>
-        <p className="font-weight-normal text-success">{cartDescription}</p>
+        <p className="font-weight-normal text-success desc1">
+          {cartDescription}
+        </p>
 
         <div className="row mt-2">
           {showAddToCart(addToCart)}
@@ -86,7 +88,7 @@ const CartUI = ({
       </div>
       <div className="quantity row">
         <i
-          className="fa fa-minus pl-3"
+          className="fa fa-minus pl-3 iconm"
           aria-hidden="true"
           onClick={() => {
             if (quantity > 1) {
@@ -97,7 +99,7 @@ const CartUI = ({
         ></i>
         <span className="text-center pl-2">{quantity}</span>
         <i
-          className="fa fa-plus pl-2"
+          className="fa fa-plus pl-2 iconp"
           aria-hidden="true"
           onClick={() => {
             setReload(!reload);

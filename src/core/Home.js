@@ -25,6 +25,7 @@ export default function Home() {
   return (
     <div>
       <Base title="Home Page">
+        {console.log(products)}
         {products.map((product, index) => {
           return (
             <span key={index}>

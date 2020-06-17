@@ -26,3 +26,23 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+rect {
+  /* background: #eaf0f1; */
+  fill: transparent;
+
+  /* background: transparent; */
+}
+
+.chart {
+  display: inline-block;
+  height: 250px;
+  width: 300px;
+  border: 2px solid lightgray;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.chartdiv {
+  position: relative;
+  left: -40px;
+  top: 38px;
+}

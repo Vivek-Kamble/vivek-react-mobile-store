@@ -1,0 +1,13 @@
+@media (max-width: 750px) {
+  .card {
+    width: 250px;
+  }
+  .card > ul > li > a {
+    cursor: pointer;
+    position: relative;
+    left: 0px;
+    height: 40px;
+    top: 0px;
+    width: 100%;
+  }
+}
