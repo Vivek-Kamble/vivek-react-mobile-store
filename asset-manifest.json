@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/vivek-react-mobile-store/static/css/main.ad528ef3.chunk.css",
+    "main.js": "/vivek-react-mobile-store/static/js/main.931ff38c.chunk.js",
+    "main.js.map": "/vivek-react-mobile-store/static/js/main.931ff38c.chunk.js.map",
+    "runtime-main.js": "/vivek-react-mobile-store/static/js/runtime-main.214a3a2f.js",
+    "runtime-main.js.map": "/vivek-react-mobile-store/static/js/runtime-main.214a3a2f.js.map",
+    "static/js/2.bcd433fe.chunk.js": "/vivek-react-mobile-store/static/js/2.bcd433fe.chunk.js",
+    "static/js/2.bcd433fe.chunk.js.map": "/vivek-react-mobile-store/static/js/2.bcd433fe.chunk.js.map",
+    "index.html": "/vivek-react-mobile-store/index.html",
+    "precache-manifest.6318ae1ca460747940497bde07cd86d3.js": "/vivek-react-mobile-store/precache-manifest.6318ae1ca460747940497bde07cd86d3.js",
+    "service-worker.js": "/vivek-react-mobile-store/service-worker.js",
+    "static/css/main.ad528ef3.chunk.css.map": "/vivek-react-mobile-store/static/css/main.ad528ef3.chunk.css.map",
+    "static/js/2.bcd433fe.chunk.js.LICENSE.txt": "/vivek-react-mobile-store/static/js/2.bcd433fe.chunk.js.LICENSE.txt",
+    "static/media/login.png": "/vivek-react-mobile-store/static/media/login.11da2c66.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.214a3a2f.js",
+    "static/js/2.bcd433fe.chunk.js",
+    "static/css/main.ad528ef3.chunk.css",
+    "static/js/main.931ff38c.chunk.js"
+  ]
+}
